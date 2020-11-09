@@ -1,15 +1,41 @@
 /** Force the browser theme radius to 14px **/
-#browser {
-	    --radius: 14px !important;
-	    --radiusHalf: calc(var(--radius) * 0.5) !important;
+.toolbar-mainbar {
+    height: 40px;
 }
+
+.UrlBar-SearchField, .UrlBar-AddressField {
+    height: calc( 100% - 9px );
+    margin-bottom: 2px;
+    transition: all .25s ease;
+}
+
+
+.UrlBar-SearchField:not(:active),
+.UrlBar-AddressField:not(:active):not(:focus-within) {
+    border-color: transparent;
+    background-color: var(--colorFgAlpha);
+}
+
+.toolbar-mainbar .button-toolbar {
+    margin-top: 2px;
+}
+
+.toolbar-mainbar .button-toolbar,
+.toolbar-mainbar .button-toolbar button {
+    border-radius: var(--radius) !important;
+}
+
+#browser {
+	    --radiusNew: calc(var(--radius) * 0.6) !important;
+	    --radiusHalfNew: calc(var(--radiusHalf) * 0.5) !important;
+}
+
 .extensions-wrapper .button-toolbar.browserAction-button {
 	width: calc((var(--padding) * 2) + 10px);
 }
 .tabs-top .tab-position .tab {
-	border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-	transition: background-color 0.2s ease-in-out;
+	border-top-left-radius: var(--radiusNew);
+    border-top-right-radius: var(--radiusNew);
 }
 
 span > .tab-position > .tab:not(.tab-mini):not(.active):hover {
@@ -48,10 +74,10 @@ span > .tab-position > .tab:not(.tab-mini):not(.active):hover::after {
     margin-left: 7px;
     margin-right: 7px;
     box-shadow: none !important;
-    border-top-left-radius: 5px !important;
-    border-top-right-radius: 5px !important;
-    border-bottom-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
+    border-top-left-radius: var(--radiusHalfNew) !important;
+    border-top-right-radius: var(--radiusHalfNew) !important;
+    border-bottom-left-radius: var(--radiusHalfNew) !important;
+    border-bottom-right-radius: var(--radiusHalfNew) !important;
     opacity: 0.8;
 }
 	
@@ -125,6 +151,176 @@ Uncomment this part to add a top dark-gray border in incognito mode
 /** Rouded borders for toolbars buttons **/
 div.toolbar-insideinput > div > button,
 div.toolbar-insideinput > div > button > img {
-	border-radius: 100% !important;
+	border-radius: var(--radiusHalfNew)!important;
 	overflow: hidden !important;
+}
+
+.vivaldi-settings .settings-sidebar .settings-navigation {
+    padding: 7px 12px 6px 12px;
+}
+
+.vivaldi-settings .settings-sidebar .button-category {
+    border-radius: var(--radius);
+    border: 0;
+    outline: 0;
+    padding: 6px 4px;
+    height: auto;
+}
+
+.vivaldi-settings .settings-sidebar .button-category.category-selected {
+    background-color: var(--colorHighlightBg);
+    fill: var(--colorHighlightFg);
+    color: var(--colorHighlightFg);
+    margin-right: initial;
+}
+
+.vivaldi-settings .settings-sidebar .settings-navigation:focus-within .tree-row[data-selected] .button-category:not(:active) {
+    border: 0;
+    box-shadow: none;
+}
+
+.startpage {
+    background-color: var(--colorBgDark) !important;
+}
+
+.dials .dial .thumbnail-image {
+    transition: all 150ms ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .UrlBar-SearchField, .UrlBar-AddressField {
+        height: calc( 100% - 10px );
+        margin-bottom: 1px;
+    }
+}
+
+.startpage .startpage-content .searchfield {
+    display: none;
+}
+
+.startpage .startpage-drawer-wrapper {
+    box-shadow: 0px -10px 50px -25px rgba(0,0,0,0.3) !important;
+}
+
+.startpage .startpage-navigation .startpage-navigation-group {
+    border-left: 0;
+}
+
+.startpage .startpage-navigation {
+    padding: 11px 12px;
+}
+
+.startpage .startpage-navigation button.button-startpage {
+    min-height: 0;
+    padding: 3px 10px;
+}
+
+.startpage .startpage-navigation .startpage-navigation-group:last-of-type {
+    border-width: 2px;
+    margin-left: 24px;
+    padding-left: 12px;
+}
+
+.startpage .startpage-navigation .startpage-navigation-group .button-startpage {
+    border-radius: var(--radius);
+    margin-left: 10px;
+}
+
+.startpage .button-startpage.active {
+    border: 0;
+    background: var(--colorHighlightBg);
+    color: var(--colorHighlightFg);
+}
+
+.startpage .startpage-navigation .startpage-navigation-group .button-startpage:hover {
+    background: var(--colorHighlightBgAlpha);
+    color: var(--colorFg);
+}
+
+.startpage .startpage-navigation .startpage-navigation-group .button-startpage:hover svg {
+    fill: var(--colorFg);
+}
+
+button.button-startpage:after {
+    display: none;
+}
+
+.thumbnail-image {
+    box-shadow: 0px 10px 50px -15px rgba(0,0,0,0.2) !important;
+}
+
+#switch {
+    background-color: var(--colorBg);
+}
+
+.right#panels-container.overlay .panel-group {
+    box-shadow: -20px 0 50px -14px rgb(0, 0, 0, 0.18);
+}
+
+.left#panels-container.overlay .panel-group {
+    box-shadow: 20px 0 50px -14px rgb(0, 0, 0, 0.18);
+}
+
+/*fixed panel stack style*/
+#panels-container:not(.overlay):after {
+    background-color: transparent;
+}
+
+/*
+    fix/3.3 → change .fullheight to .SlideBar--FullHeight
+*/
+.right#panels-container:not(.overlay) button.SlideBar--FullHeight.alternate {
+    min-width: 28px;
+    box-shadow: -12px 0 10px -8px rgb(0, 0, 0, 0.1);
+    left: 0;
+}
+
+.right#panels-container:not(.overlay) button.SlideBar--FullHeight.alternate:active,
+.right#panels-container:not(.overlay) button.SlideBar--FullHeight.alternate.touch-active {
+    left: 0;
+}
+
+.left#panels-container:not(.overlay) button.SlideBar--FullHeight {
+    min-width: 28px;
+    box-shadow: 12px 0 10px -8px rgb(0, 0, 0, 0.1);
+    right: 0;
+}
+
+.left#panels-container:not(.overlay) button.SlideBar--FullHeight:active,
+.left#panels-container:not(.overlay) button.SlideBar--FullHeight.touch-active {
+    right: 0;
+}
+/*fixed panel stack style*/
+
+#panels-container.left #switch {
+    box-shadow: inset -8px 0 20px -8px var(--colorBorder);
+}
+
+#panels-container.right #switch {
+    box-shadow: inset 8px 0 20px -8px var(--colorBorder);
+}
+
+#panels .webpanel-stack .webpanel .webpanel-header {
+    order: 2;
+    border-top: 1px solid var(--colorBgDark);
+}
+
+#panels .webpanel-stack .webpanel .webpanel-content {
+    order: 1;
+}
+
+#panels h1.webpanel-title {
+    font-size: 14px;
+}
+
+#switch button.webviewbtn img {
+    padding: 1px;
+}
+
+.theme-dark #switch button.webviewbtn img {
+    background-color: transparent;
+}
+
+#browser.mac .window-buttongroup {
+    margin-top: 16px;
 }
